@@ -29,17 +29,17 @@ modules:
       - install -Dm644 /app/resources/app/assets/icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
     sources:
       - type: archive
-        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.5.3/pikatorrent-linux-x64-0.5.3.zip
-        sha256: 56152791fedc58391b7b6368841a784327b6cfdc5b73766cd1d587c7474a62b2
+        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.6.0/pikatorrent-linux-x64-0.6.0.zip
+        sha256: 10d0963a8429f789ab05460e951b3efa4a4b52d91e6ab3cc86dbf97a22e2cea4
         dest: pikatorrent
       - type: file
         url: https://raw.githubusercontent.com/G-Ray/pikatorrent/e4b3e875243327186282b076494bf0e4df64e2d2/apps/desktop/assets/linux/pikatorrent.desktop
         sha256: 5dd067f648b231fd2afb879b85060675328b80e4e772055da032bb75f8ce3d28
       - type: file
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/6fdd7788ca6fa5bb425a75d48a72ba2756b1ecee/apps/desktop/assets/linux/pikatorrent.metainfo.xml
-        sha256: 64576b1db3cb0d19bdcfcce113cce988add6a17024927ebf6711c5e5b12a34a7
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/20eae4ef87a5dd7d1ef952d23dfeeb4d6cf597f5/apps/desktop/assets/linux/pikatorrent.metainfo.xml
+        sha256: 529ffc537f160ae186a17bfb1a9c4f1789b591a3706d18163556ec08a340e196
       # Wrapper to launch the app
       - type: script
         dest-filename: run.sh
         commands:
-          - zypak-wrapper.sh /app/pikatorrent "$@"
+          - zypak-wrapper.sh /app/pikatorrent --no-check-updates "$@"
