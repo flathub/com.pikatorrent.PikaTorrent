@@ -27,8 +27,8 @@ modules:
       - install -Dm644 /app/resources/app/assets/icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
     sources:
       - type: archive
-        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.8.1/pikatorrent-linux-x64-0.8.1.zip
-        sha256: 3c19a4a8f263f5d3d2a036ea02305792469c5f0f0abe5083a0a181d09b50db1c
+        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.8.2/pikatorrent-linux-x64-0.8.2.zip
+        sha256: af5d22ac67a0e6db4a9ab5480d3c180498c447a4dd8e51a8d6c0d6b3768ef0ef
         dest: pikatorrent
       - type: file
         url: https://raw.githubusercontent.com/G-Ray/pikatorrent/e4b3e875243327186282b076494bf0e4df64e2d2/apps/desktop/assets/linux/pikatorrent.desktop
