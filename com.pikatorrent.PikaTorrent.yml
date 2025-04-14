@@ -9,6 +9,7 @@ finish-args:
   - --filesystem=xdg-download
   - --socket=wayland
   - --socket=fallback-x11
+  - --socket=pulseaudio
 cleanup:
 modules:
   - name: PikaTorrent
