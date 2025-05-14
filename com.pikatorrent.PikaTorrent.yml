@@ -10,6 +10,10 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --socket=pulseaudio
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  # To check connectivity
+  - --system-talk-name=org.freedesktop.NetworkManager
 cleanup:
 modules:
   - name: PikaTorrent
