@@ -21,8 +21,10 @@ modules:
     post-install:
       - install -Dm644 com.pikatorrent.PikaTorrent.desktop ${FLATPAK_DEST}/share/applications/com.pikatorrent.PikaTorrent.desktop
       - install -Dm644 com.pikatorrent.PikaTorrent.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.pikatorrent.PikaTorrent.metainfo.xml
+      # TODO: Use svg
       - install -Dm644 icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
     modules:
+      - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
       - name: libass
         cleanup:
           - /include
