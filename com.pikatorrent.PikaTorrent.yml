@@ -10,6 +10,10 @@ finish-args:
   - --socket=wayland
   - --socket=fallback-x11
   - --socket=pulseaudio
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  # To check connectivity
+  - --system-talk-name=org.freedesktop.NetworkManager
 cleanup:
 modules:
   - name: PikaTorrent
@@ -21,8 +25,10 @@ modules:
     post-install:
       - install -Dm644 com.pikatorrent.PikaTorrent.desktop ${FLATPAK_DEST}/share/applications/com.pikatorrent.PikaTorrent.desktop
       - install -Dm644 com.pikatorrent.PikaTorrent.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.pikatorrent.PikaTorrent.metainfo.xml
+      # TODO: Use svg
       - install -Dm644 icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
     modules:
+      - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
       - name: libass
         cleanup:
           - /include
@@ -112,8 +118,8 @@ modules:
               tag-pattern: ^v([\d.]+)$
     sources:
       - type: archive
-        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.12.0/PikaTorrent-v0.12.0-linux-x64.zip
-        sha256: e9469e9a1bc45e0bbb7f527c6c6da7b71c91042af755e3b7a94ec2b08a6c254d
+        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.13.0/PikaTorrent-v0.13.0-linux-x64.zip
+        sha256: 25e22a4461341dc866d593cf2cc96b034dbe37c144213ae8978c36b36742e40d
         dest: pikatorrent
         strip-components: 0
         only-arches:
@@ -128,8 +134,8 @@ modules:
             | first
 
       - type: archive
-        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.12.0/PikaTorrent-v0.12.0-linux-arm64.zip
-        sha256: f09e959715f56796105f4dabb05587045d240ddb45eefe49dc4f58316b0d79e4
+        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.13.0/PikaTorrent-v0.13.0-linux-arm64.zip
+        sha256: 9c15d91700bee29a68981c2f4f97e2309708b34fbfce580bf7cc99835e4a56d7
         dest: pikatorrent
         strip-components: 0
         only-arches:
@@ -144,8 +150,8 @@ modules:
 
       - type: file
         dest-filename: com.pikatorrent.PikaTorrent.metainfo.xml
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.12.0/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml
-        sha256: 8a46de476944c200e37380d44f73f392d741b99161b12c914b78ce0c1751932c
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.13.0/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml
+        sha256: 50758a29d4a5ef5e1b67ba1f3ea5034bc4c01353f7b86a039f290780474ce003
         x-checker-data:
           type: json
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
@@ -157,7 +163,7 @@ modules:
 
       - type: file
         dest-filename: com.pikatorrent.PikaTorrent.desktop
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.12.0/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.13.0/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop
         sha256: 4bd452e7a3382009c96ce731b4e3d38ffc570c778808b5979d0d1ecb9a1dfcfa
         x-checker-data:
           type: json
@@ -170,7 +176,7 @@ modules:
 
       - type: file
         dest-filename: icon.png
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.12.0/app/linux/packaging/icon.png
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.13.0/app/linux/packaging/icon.png
         sha256: f59d0e72153051e9babea4889af24c8cf05a46e1cdb7ef26179ba24a62d63604
         x-checker-data:
           type: json
