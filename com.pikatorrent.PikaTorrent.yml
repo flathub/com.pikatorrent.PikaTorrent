@@ -1,6 +1,6 @@
 app-id: com.pikatorrent.PikaTorrent
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: pikatorrent
 finish-args:
@@ -88,8 +88,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/FFmpeg/FFmpeg.git
-            commit: db69d06eeeab4f46da15030a80d539efb4503ca8
-            tag: n7.1.1
+            commit: 894da5ca7d742e4429ffb2af534fcda0103ef593
+            tag: n8.0.1
             x-checker-data:
               type: git
               tag-pattern: ^n([\d.]{3,7})$
@@ -109,8 +109,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/mpv-player/mpv.git
-            tag: v0.40.0
-            commit: e48ac7ce08462f5e33af6ef9deeac6fa87eef01e
+            tag: v0.41.0
+            commit: 41f6a645068483470267271e1d09966ca3b9f413
             x-checker-data:
               type: git
               tag-pattern: ^v([\d.]+)$
@@ -128,8 +128,7 @@ modules:
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            .assets | map(.browser_download_url | select(endswith("-linux-x64.zip")))
+          url-query: .assets | map(.browser_download_url | select(endswith("-linux-x64.zip")))
             | first
 
       - type: archive
@@ -144,8 +143,7 @@ modules:
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            .assets | map(.browser_download_url | select(endswith("-linux-arm64.zip")))
+          url-query: .assets | map(.browser_download_url | select(endswith("-linux-arm64.zip")))
             | first
 
       - type: file
@@ -158,8 +156,7 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml"'
 
       - type: file
@@ -172,8 +169,7 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop"'
 
       - type: file
@@ -186,6 +182,5 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/icon.png"'
