@@ -1,6 +1,6 @@
 app-id: com.pikatorrent.PikaTorrent
 runtime: org.freedesktop.Platform
-runtime-version: "24.08"
+runtime-version: '24.08'
 sdk: org.freedesktop.Sdk
 command: pikatorrent
 finish-args:
@@ -88,8 +88,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/FFmpeg/FFmpeg.git
-            commit: db69d06eeeab4f46da15030a80d539efb4503ca8
-            tag: n7.1.1
+            commit: 894da5ca7d742e4429ffb2af534fcda0103ef593
+            tag: n8.0.1
             x-checker-data:
               type: git
               tag-pattern: ^n([\d.]{3,7})$
@@ -109,15 +109,15 @@ modules:
         sources:
           - type: git
             url: https://github.com/mpv-player/mpv.git
-            tag: v0.40.0
-            commit: e48ac7ce08462f5e33af6ef9deeac6fa87eef01e
+            tag: v0.41.0
+            commit: 41f6a645068483470267271e1d09966ca3b9f413
             x-checker-data:
               type: git
               tag-pattern: ^v([\d.]+)$
     sources:
       - type: archive
-        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.14.0/PikaTorrent-v0.14.0-linux-x64.zip
-        sha256: ed4ae71960030a9c594fa3f975673f390458119912d4ca87728a62c6988184e2
+        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.15.0/PikaTorrent-v0.15.0-linux-x64.zip
+        sha256: 5269fdfe05d64694430f6ec4b24fd0a8e980ef911c401ecc6bb40dd5b4bd211c
         dest: pikatorrent
         strip-components: 0
         only-arches:
@@ -128,13 +128,12 @@ modules:
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            .assets | map(.browser_download_url | select(endswith("-linux-x64.zip")))
+          url-query: .assets | map(.browser_download_url | select(endswith("-linux-x64.zip")))
             | first
 
       - type: archive
-        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.14.0/PikaTorrent-v0.14.0-linux-arm64.zip
-        sha256: 0b42e98e8d98f35620114b0ec2ce818af7975835d49c5cb9af64cf1192e89d7d
+        url: https://github.com/G-Ray/pikatorrent/releases/download/v0.15.0/PikaTorrent-v0.15.0-linux-arm64.zip
+        sha256: 3639b5ab3f68d750d762a4f23ce4918c1127d5cb60a6c6011e6808c7947daa8c
         dest: pikatorrent
         strip-components: 0
         only-arches:
@@ -144,27 +143,25 @@ modules:
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            .assets | map(.browser_download_url | select(endswith("-linux-arm64.zip")))
+          url-query: .assets | map(.browser_download_url | select(endswith("-linux-arm64.zip")))
             | first
 
       - type: file
         dest-filename: com.pikatorrent.PikaTorrent.metainfo.xml
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.14.0/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml
-        sha256: 4be70cc94061d8cadec942211f47e7dc4b8516fb5384e696fe60da736b6df061
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.15.0/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml
+        sha256: 1bf721a44ec1b54081bd4110df4df4a19f25deed7fe0b3a0d84bfab31780296b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml"'
 
       - type: file
         dest-filename: com.pikatorrent.PikaTorrent.desktop
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.14.0/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.15.0/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop
         sha256: 4bd452e7a3382009c96ce731b4e3d38ffc570c778808b5979d0d1ecb9a1dfcfa
         x-checker-data:
           type: json
@@ -172,13 +169,12 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop"'
 
       - type: file
         dest-filename: icon.png
-        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.14.0/app/linux/packaging/icon.png
+        url: https://raw.githubusercontent.com/G-Ray/pikatorrent/v0.15.0/app/linux/packaging/icon.png
         sha256: f59d0e72153051e9babea4889af24c8cf05a46e1cdb7ef26179ba24a62d63604
         x-checker-data:
           type: json
@@ -186,6 +182,5 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query:
-            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/icon.png"'
