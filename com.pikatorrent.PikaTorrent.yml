@@ -1,6 +1,6 @@
 app-id: com.pikatorrent.PikaTorrent
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: "24.08"
 sdk: org.freedesktop.Sdk
 command: pikatorrent
 finish-args:
@@ -101,7 +101,6 @@ modules:
           - --buildtype=release
           - -Dbuild-date=false
           - -Dmanpage-build=disabled
-          - -Dsdl2=enabled
           - -Dvulkan=enabled
         cleanup:
           - /include
@@ -128,7 +127,8 @@ modules:
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query: .assets | map(.browser_download_url | select(endswith("-linux-x64.zip")))
+          url-query:
+            .assets | map(.browser_download_url | select(endswith("-linux-x64.zip")))
             | first
 
       - type: archive
@@ -143,7 +143,8 @@ modules:
           url: https://api.github.com/repos/G-Ray/pikatorrent/releases/latest
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query: .assets | map(.browser_download_url | select(endswith("-linux-arm64.zip")))
+          url-query:
+            .assets | map(.browser_download_url | select(endswith("-linux-arm64.zip")))
             | first
 
       - type: file
@@ -156,7 +157,8 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query:
+            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/com.pikatorrent.PikaTorrent.metainfo.xml"'
 
       - type: file
@@ -169,7 +171,8 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query:
+            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/com.pikatorrent.PikaTorrent.desktop"'
 
       - type: file
@@ -182,5 +185,6 @@ modules:
           tag-query: .tag_name
           version-query: .tag_name | sub("^v"; "")
           timestamp-query: .published_at
-          url-query: '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
+          url-query:
+            '"https://raw.githubusercontent.com/G-Ray/pikatorrent/" + $tag
             + "/app/linux/packaging/icon.png"'
